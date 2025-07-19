@@ -34,3 +34,7 @@ yarn-error.log*
 
 # TypeScript
 *.tsbuildinfo
+
+# Large files
+public/video/hero-background.mp4
+public/video/hero-placeholder2.mp4

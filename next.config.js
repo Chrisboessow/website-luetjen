@@ -7,10 +7,10 @@ const nextConfig = {
     unoptimized: true,
     domains: ['images.unsplash.com'],
   },
-  // Aktiviere diese Option nur wenn IONOS Probleme mit der Edge Runtime hat
-  // experimental: {
-  //   runtime: 'nodejs',
-  // }
+  experimental: {
+    // Diese Einstellung hilft bei IONOS Deployment
+    runtime: 'nodejs'
+  }
 }
 
 module.exports = nextConfig 

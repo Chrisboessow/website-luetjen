@@ -598,13 +598,13 @@ export default function AboutPage() {
                     <div className="flex justify-center">
                       <div className="relative w-full aspect-[4/5] max-w-sm overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-[1.02]">
                         {person.image.startsWith('/') ? (
-                          <Image
-                            src={person.image}
-                            alt={person.name}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          />
+                        <Image
+                          src={person.image}
+                          alt={person.name}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
                         ) : (
                           <div className="w-full h-full bg-gray-200 flex items-center justify-center text-6xl">
                             {person.image}

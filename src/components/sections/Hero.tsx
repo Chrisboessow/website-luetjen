@@ -191,8 +191,9 @@ export default function Hero() {
                   className="h-full w-full object-cover"
                   onEnded={() => setIsPlaying(false)}
                   onClick={togglePlayPause}
+                  poster="/images/hero-placeholder.jpg"
                 >
-                  <source src="/video/hero-placeholder2.mp4" type="video/mp4" />
+                  <source src="./video/hero-placeholder2.mp4" type="video/mp4" />
                 </video>
                 
                 {/* Play Button Overlay - nur anzeigen wenn nicht gestartet */}

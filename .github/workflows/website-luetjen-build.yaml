@@ -27,6 +27,11 @@ jobs:
         with:
           submodules: 'recursive'
 
+      - name: Install script
+        run: npm run build
+
+
+
       - name: Run script
 # uncomment the following lines if you want to add environment variables for this step
 #        env:

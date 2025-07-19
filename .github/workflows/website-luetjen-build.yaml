@@ -28,7 +28,7 @@ jobs:
           submodules: 'recursive'
 
       - name: Install script
-        run: npm run build
+        run: npm install
 
 
 

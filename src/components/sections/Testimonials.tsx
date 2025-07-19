@@ -4,25 +4,42 @@ import { motion } from 'framer-motion'
 import { StarIcon } from '@heroicons/react/24/solid'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-// Fallback-Testimonials für den Fall, dass die API nicht erreichbar ist
-const fallbackTestimonials = [
+const testimonials = [
   {
-    content: 'Lädt...',
+    content: 'Sehr kompetente und freundliche Beratung. Schnelle und saubere Montage. Wir sind rundum zufrieden.',
     author: {
-      name: 'Lädt...',
+      name: 'Markus Weber',
       role: 'Google Rezension',
-      image: '/images/testimonials/placeholder-1.jpg'
+      image: '/images/testimonials/person1.jpg'
     },
     rating: 5,
   },
   {
-    content: 'Lädt...',
+    content: 'Top Service von der Beratung bis zur Montage. Faire Preise und qualitativ hochwertige Produkte.',
     author: {
-      name: 'Lädt...',
+      name: 'Sandra Schmidt',
       role: 'Google Rezension',
-      image: '/images/testimonials/placeholder-2.jpg'
+      image: '/images/testimonials/person2.jpg'
+    },
+    rating: 5,
+  },
+  {
+    content: 'Hervorragende Arbeit bei der Installation unseres neuen Industrietors. Professionell und zuverlässig.',
+    author: {
+      name: 'Thomas Müller',
+      role: 'Google Rezension',
+      image: '/images/testimonials/person3.jpg'
+    },
+    rating: 5,
+  },
+  {
+    content: 'Sehr zufrieden mit der Wartung unserer Toranlagen. Schneller Service und kompetente Mitarbeiter.',
+    author: {
+      name: 'Julia Koch',
+      role: 'Google Rezension',
+      image: '/images/testimonials/person4.jpg'
     },
     rating: 5,
   }
@@ -30,33 +47,7 @@ const fallbackTestimonials = [
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [testimonials, setTestimonials] = useState(fallbackTestimonials)
-  const [isLoading, setIsLoading] = useState(true)
-  const [stats, setStats] = useState({ totalReviews: 16, averageRating: 5.0 })
-
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const response = await fetch('/api/google-reviews')
-        if (!response.ok) throw new Error('Failed to fetch reviews')
-        const data = await response.json()
-        setTestimonials(data)
-        
-        // Lade auch die Statistiken
-        const statsResponse = await fetch('/api/google-reviews', { method: 'POST' })
-        if (statsResponse.ok) {
-          const statsData = await statsResponse.json()
-          setStats(statsData)
-        }
-      } catch (error) {
-        console.error('Error fetching reviews:', error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchReviews()
-  }, [])
+  const stats = { totalReviews: 16, averageRating: 5.0 }
 
   const nextTestimonials = () => {
     setCurrentIndex((prevIndex) => 
@@ -73,28 +64,7 @@ export default function Testimonials() {
   const currentTestimonials = [
     testimonials[currentIndex],
     testimonials[currentIndex + 1]
-  ].filter(Boolean) // Filter null/undefined values if we have odd number of testimonials
-
-  if (isLoading) {
-    return (
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Was unsere Kunden sagen
-            </h2>
-          </div>
-          <div className="mt-16 flex justify-center">
-            <div className="animate-pulse space-y-8">
-              <div className="h-4 bg-gray-200 rounded w-48"></div>
-              <div className="h-4 bg-gray-200 rounded w-64"></div>
-              <div className="h-4 bg-gray-200 rounded w-52"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    )
-  }
+  ].filter(Boolean)
 
   return (
     <section className="bg-white py-16 sm:py-20">
@@ -109,7 +79,6 @@ export default function Testimonials() {
             Was unsere Kunden sagen
           </motion.h2>
           
-          {/* Google Reviews Statistik */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -151,13 +120,10 @@ export default function Testimonials() {
                   {testimonial.content}
                 </blockquote>
                 <div className="mt-8 flex items-center gap-4">
-                  <div className="relative h-12 w-12 overflow-hidden rounded-full">
-                    <Image
-                      src={testimonial.author.image}
-                      alt={testimonial.author.name}
-                      fill
-                      className="object-cover"
-                    />
+                  <div className="relative h-12 w-12 overflow-hidden rounded-full bg-gray-200">
+                    <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-lg font-semibold">
+                      {testimonial.author.name.charAt(0)}
+                    </div>
                   </div>
                   <div>
                     <div className="text-lg font-semibold text-gray-900">
@@ -172,7 +138,6 @@ export default function Testimonials() {
             ))}
           </div>
 
-          {/* Navigation Buttons */}
           <div className="mt-8 flex justify-center gap-4">
             <button
               onClick={previousTestimonials}

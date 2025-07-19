@@ -1,0 +1,380 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Apply Montserrat to all text */
+@layer base {
+  html {
+    font-family: 'Montserrat', system-ui, sans-serif;
+  }
+}
+
+/* Import layout styles */
+@import '../styles/layout.css';
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+@layer base {
+  :root {
+    --font-montserrat: 'Montserrat', sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} 
+
+/* Enterprise Components */
+.card {
+  @apply rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-xl hover:ring-primary-500/20;
+}
+
+/* Visual Elements */
+.gradient-bg {
+  @apply bg-gradient-to-b from-gray-50 to-white;
+}
+
+.gradient-bg-reverse {
+  @apply bg-gradient-to-t from-gray-50 to-white;
+}
+
+/* Enterprise Buttons */
+.btn-primary {
+  @apply rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600;
+}
+
+.btn-secondary {
+  @apply rounded-lg bg-white px-6 py-3 text-base font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 transition-all duration-200 hover:bg-gray-50;
+}
+
+/* Service Cards */
+.service-card {
+  @apply relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg transition-all duration-300;
+}
+
+.service-card:hover {
+  @apply shadow-xl ring-1 ring-primary-500/20;
+}
+
+.service-card .image-container {
+  @apply relative h-64 w-full overflow-hidden rounded-xl;
+}
+
+.service-card .image-container img {
+  @apply object-cover transition-transform duration-300;
+}
+
+.service-card:hover .image-container img {
+  @apply scale-105;
+}
+
+.service-card .content {
+  @apply mt-6 space-y-4;
+}
+
+.service-card .features {
+  @apply mt-6 space-y-3;
+}
+
+.service-card .feature-item {
+  @apply flex items-center gap-3 text-sm text-gray-600;
+}
+
+.service-card .feature-icon {
+  @apply h-5 w-5 flex-none text-primary-600;
+}
+
+/* Feature Grid */
+.feature-grid {
+  @apply grid gap-8 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.feature-item {
+  @apply flex flex-col items-start gap-4 rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-200/50 transition-all duration-300 hover:shadow-xl;
+}
+
+.feature-icon-container {
+  @apply flex h-12 w-12 items-center justify-center rounded-xl bg-primary-100 text-primary-600;
+}
+
+/* Process Steps */
+.process-step {
+  @apply relative flex flex-col items-center gap-4 text-center;
+}
+
+.process-step::before {
+  content: '';
+  @apply absolute left-1/2 top-1/2 h-px w-full -translate-x-1/2 bg-gray-200;
+}
+
+.process-step:last-child::before {
+  @apply hidden;
+}
+
+.process-number {
+  @apply relative flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-bold text-white;
+}
+
+/* Testimonials */
+.testimonial-card {
+  @apply relative rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-200/50;
+}
+
+.testimonial-quote {
+  @apply relative mt-6 text-lg font-medium leading-8 text-gray-900;
+}
+
+.testimonial-author {
+  @apply mt-6 flex items-center gap-4;
+}
+
+/* Social Media Feed */
+.social-feed {
+  @apply grid gap-8 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.social-post {
+  @apply overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-200/50;
+}
+
+.social-post-header {
+  @apply flex items-center gap-4 border-b border-gray-100 p-4;
+}
+
+.social-post-content {
+  @apply p-4;
+}
+
+.social-post-image {
+  @apply aspect-square w-full object-cover;
+}
+
+.social-post-footer {
+  @apply flex items-center justify-between border-t border-gray-100 p-4;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Video Controls Styles */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.slider::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.slider::-ms-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.slider::-ms-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Social Media Embed Styles */
+.instagram-embed iframe,
+.facebook-embed iframe,
+.linkedin-embed iframe {
+  border-radius: 0.75rem !important;
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.facebook-embed {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 500px;
+  background-color: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.fb-page {
+  background-color: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.fb-page > span {
+  max-width: 328px;
+  width: 100% !important;
+}
+
+.fb-page iframe {
+  max-width: 328px;
+  width: 100% !important;
+  border-radius: 0.75rem !important;
+}
+
+.linkedin-embed {
+  width: 100%;
+  min-height: 500px;
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.LI-profile-badge {
+  width: 100% !important;
+  max-width: 328px !important;
+}
+
+/* Social Media Cards */
+.social-card {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 328px;
+  margin: 0 auto;
+}
+
+.feed-frame {
+  width: 100%;
+  border-radius: 0;
+  margin: 0;
+}
+
+.feed-preview {
+  width: 100%;
+}
+
+.view-profile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #f3f4f6;
+  color: #111827;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+  margin-top: auto;
+}
+
+.view-profile-btn:hover {
+  background: #e5e7eb;
+}
+
+.social-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Platform specific colors */
+.social-card[data-platform="instagram"] .view-profile-btn {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+}
+
+.social-card[data-platform="facebook"] .view-profile-btn {
+  background: #1877f2;
+  color: white;
+}
+
+.social-card[data-platform="linkedin"] .view-profile-btn {
+  background: #0a66c2;
+  color: white;
+}
+
+/* Loading Animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+} 

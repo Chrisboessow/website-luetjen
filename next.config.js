@@ -7,10 +7,12 @@ const nextConfig = {
     unoptimized: true,
     domains: ['images.unsplash.com'],
   },
-  // Aktiviere diese Option nur wenn IONOS Probleme mit der Edge Runtime hat
-  // experimental: {
-  //   runtime: 'nodejs',
-  // }
+  // Kopiere die Videos in den Build
+  experimental: {
+    outputFileTracingIncludes: {
+      '/**': ['./public/**/*']
+    }
+  }
 }
 
 module.exports = nextConfig 

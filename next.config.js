@@ -1,16 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: 'export',
   reactStrictMode: true,
   swcMinify: true,
   images: {
     unoptimized: true,
     domains: ['images.unsplash.com'],
   },
-  experimental: {
-    // Diese Einstellung hilft bei IONOS Deployment
-    runtime: 'nodejs'
-  }
+  // Aktiviere diese Option nur wenn IONOS Probleme mit der Edge Runtime hat
+  // experimental: {
+  //   runtime: 'nodejs',
+  // }
 }
 
 module.exports = nextConfig 

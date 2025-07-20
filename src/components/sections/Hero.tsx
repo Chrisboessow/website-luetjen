@@ -120,7 +120,7 @@ export default function Hero() {
               <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-xl">
                 <iframe
                   className="absolute inset-0 h-full w-full"
-                  src={`https://www.youtube.com/embed/zqLYU0EcHc8?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0${isPlaying ? '&autoplay=1' : ''}`}
+                  src={`https://www.youtube.com/embed/YZd-b7fY1KE?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0${isPlaying ? '&autoplay=1' : ''}`}
                   title="Lütjen Tor- und Metallbau GmbH"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

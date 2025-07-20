@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -21,7 +21,7 @@ const Logo = ({ className = '', width = 240, height = 78 }: { className?: string
       fill
       className="object-contain"
       priority
-      sizes={`${width}px`}
+      sizes={`(max-width: 640px) ${width * 0.8}px, ${width}px`}
       quality={100}
     />
   </div>
@@ -39,16 +39,29 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Verhindere Scrollen wenn Mobile-Menü offen ist
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [mobileMenuOpen])
+
   return (
     <header className={cn(
       'fixed inset-x-0 top-0 z-50 transition-all duration-300',
-      scrolled ? 'bg-white/80 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+      scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
     )}>
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8" aria-label="Global">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Lütjen GmbH</span>
-            <Logo />
+            <Logo width={180} height={58} className="sm:hidden" />
+            <Logo className="hidden sm:block" />
           </Link>
         </div>
         
@@ -56,7 +69,7 @@ export default function Navigation() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-100/50 transition-colors"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Menü öffnen</span>
@@ -71,8 +84,10 @@ export default function Navigation() {
               key={item.name}
               href={item.href}
               className={cn(
-                'text-[1.1rem] font-semibold leading-6 transition-colors duration-200',
-                scrolled ? 'text-gray-900 hover:text-primary-600' : 'text-gray-900 hover:text-primary-600'
+                'text-base xl:text-lg font-semibold leading-6 transition-all duration-200',
+                scrolled 
+                  ? 'text-gray-900 hover:text-primary-600' 
+                  : 'text-gray-900 hover:text-primary-600'
               )}
             >
               {item.name}
@@ -84,7 +99,7 @@ export default function Navigation() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             href="/kontakt"
-            className="btn-primary text-[1.1rem]"
+            className="btn-primary text-base xl:text-lg"
           >
             Jetzt Beratung anfordern
           </Link>
@@ -92,55 +107,90 @@ export default function Navigation() {
       </nav>
 
       {/* Mobile menu */}
-      <motion.div
-        initial={{ opacity: 0, x: '100%' }}
-        animate={{ opacity: mobileMenuOpen ? 1 : 0, x: mobileMenuOpen ? 0 : '100%' }}
-        transition={{ duration: 0.3 }}
-        className={cn(
-          'fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10',
-          !mobileMenuOpen && 'pointer-events-none'
-        )}
-      >
-        <div className="flex items-center justify-between">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Lütjen</span>
-            <Logo width={220} height={71} />
-          </Link>
-          <button
-            type="button"
-            className="-m-2.5 rounded-md p-2.5 text-gray-700"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <span className="sr-only">Menü schließen</span>
-            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <div className="mt-6 flow-root">
-          <div className="-my-6 divide-y divide-gray-500/10">
-            <div className="space-y-2 py-6">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="-mx-3 block rounded-lg px-3 py-2 text-[1.1rem] font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-hidden="true"
+            />
+            
+            {/* Menu panel */}
+            <motion.div
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-4 sm:px-6 py-6 sm:max-w-sm shadow-xl"
+            >
+              <div className="flex items-center justify-between">
+                <Link 
+                  href="/" 
+                  className="-m-1.5 p-1.5"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {item.name}
+                  <span className="sr-only">Lütjen</span>
+                  <Logo width={180} height={58} className="sm:hidden" />
+                  <Logo width={220} height={71} className="hidden sm:block" />
                 </Link>
-              ))}
-            </div>
-            <div className="py-6">
-              <Link
-                href="/kontakt"
-                className="btn-primary w-full justify-center text-[1.1rem]"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Jetzt Beratung anfordern
-              </Link>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+                <button
+                  type="button"
+                  className="-m-2.5 rounded-md p-2.5 text-gray-700 hover:bg-gray-100/50 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span className="sr-only">Menü schließen</span>
+                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
+              </div>
+              <div className="mt-6 flow-root">
+                <div className="-my-6 divide-y divide-gray-500/10">
+                  <div className="space-y-1 py-6">
+                    {navigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="group -mx-3 flex items-center gap-2 rounded-lg px-3 py-3 text-base sm:text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50 transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <span className="flex-1">{item.name}</span>
+                        <svg
+                          className="h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          aria-hidden="true"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M7 7l3-3 3 3m0 6l-3 3-3-3"
+                            transform="rotate(-90 10 10)"
+                          />
+                        </svg>
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="py-6">
+                    <Link
+                      href="/kontakt"
+                      className="btn-primary w-full justify-center text-base sm:text-lg"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Jetzt Beratung anfordern
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   )
 } 

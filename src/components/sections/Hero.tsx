@@ -28,20 +28,20 @@ export default function Hero() {
 
   return (
     <div className="relative overflow-hidden bg-white">
-      <div className="mx-auto max-w-7xl px-6 pb-16 pt-16 sm:pb-24 lg:flex lg:px-8 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pb-12 pt-12 sm:pb-16 sm:pt-16 lg:flex lg:px-8 lg:py-32">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 lg:text-6xl">
               Ihr Partner für
               <br />
               <span className="relative mt-2 block text-primary-600">
                 Tore & Metallbau.
                 <svg
-                  className="absolute -bottom-1 left-0 w-full"
+                  className="absolute -bottom-1 left-0 w-full hidden sm:block"
                   height="15"
                   viewBox="0 0 400 15"
                   fill="none"
@@ -62,7 +62,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-6 text-lg leading-8 text-gray-600"
+            className="mt-6 text-base sm:text-lg leading-8 text-gray-600"
           >
             Seit über 40 Jahren liefern wir hochwertige Toranlagen und Metallbaulösungen für Industrie, Gewerbe und Privatkunden. Qualität und Service, die überzeugen.
           </motion.p>
@@ -71,14 +71,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-8 space-y-4"
+            className="mt-6 sm:mt-8 space-y-3 sm:space-y-4"
           >
             {benefits.map((benefit, index) => (
-              <div key={benefit} className="flex items-center gap-3">
+              <div key={benefit} className="flex items-center gap-2 sm:gap-3">
                 <div className="rounded-full bg-orange-100 p-1">
-                  <CheckCircleIcon className="h-5 w-5 flex-none text-orange-600" />
+                  <CheckCircleIcon className="h-4 w-4 sm:h-5 sm:w-5 flex-none text-orange-600" />
                 </div>
-                <p className="text-gray-600">{benefit}</p>
+                <p className="text-sm sm:text-base text-gray-600">{benefit}</p>
               </div>
             ))}
           </motion.div>
@@ -87,9 +87,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="mt-10 flex items-center gap-6"
+            className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
           >
-            <button className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+            <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-primary-600 px-4 sm:px-6 py-2.5 sm:py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
               Jetzt Beratung anfordern
             </button>
             <a 
@@ -100,16 +100,16 @@ export default function Hero() {
             >
               <div className="flex items-center">
                 {[...Array(5)].map((_, i) => (
-                  <StarIcon key={i} className="h-5 w-5 text-orange-500" />
+                  <StarIcon key={i} className="h-4 w-4 sm:h-5 sm:w-5 text-orange-500" />
                 ))}
               </div>
               <span className="font-semibold">5.0</span>
-              <span className="text-sm text-gray-500">(16 Google-Bewertungen)</span>
+              <span className="text-xs sm:text-sm text-gray-500">(16 Google-Bewertungen)</span>
             </a>
           </motion.div>
         </div>
 
-        <div className="mx-auto mt-14 flex max-w-2xl flex-col sm:mt-16 lg:ml-10 lg:mt-0 lg:mr-0 lg:max-w-none lg:flex-none xl:ml-16">
+        <div className="mx-auto mt-8 sm:mt-14 flex max-w-2xl flex-col sm:mt-16 lg:ml-10 lg:mt-0 lg:mr-0 lg:max-w-none lg:flex-none xl:ml-16">
           <div className="max-w-3xl flex-none sm:max-w-4xl lg:max-w-2xl">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}

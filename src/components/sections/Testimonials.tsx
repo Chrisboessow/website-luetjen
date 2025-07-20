@@ -3,43 +3,60 @@
 import { motion } from 'framer-motion'
 import { StarIcon } from '@heroicons/react/24/solid'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
 import { useState } from 'react'
 
 const testimonials = [
   {
-    content: 'Sehr kompetente und freundliche Beratung. Schnelle und saubere Montage. Wir sind rundum zufrieden.',
+    content: 'Die Zusammenarbeit mit Lütjen war äußerst angenehm und professionell! Besonders die persönliche Betreuung durch den Inhaber hebt sich positiv hervor und machte...',
     author: {
-      name: 'Markus Weber',
+      name: 'Gian Schiavone',
       role: 'Google Rezension',
-      image: '/images/testimonials/person1.jpg'
+      image: '👤'
     },
     rating: 5,
   },
   {
-    content: 'Top Service von der Beratung bis zur Montage. Faire Preise und qualitativ hochwertige Produkte.',
+    content: 'Bin sehr zufrieden mit Fa.Lütjen. Hat alles super geklappt. Über die Erstberatung, das Angebot, die Terminabsprache und der Einbau. Auch der Preis für das Garagentor ist gegenüber anderen Anbieter sehr gut.',
     author: {
-      name: 'Sandra Schmidt',
+      name: 'Reinhard Bauer',
       role: 'Google Rezension',
-      image: '/images/testimonials/person2.jpg'
+      image: '👤'
     },
     rating: 5,
   },
   {
-    content: 'Hervorragende Arbeit bei der Installation unseres neuen Industrietors. Professionell und zuverlässig.',
+    content: 'Nach einem Problem mit dem Garagentor, kam der Inhaber abends um 20 Uhr noch persönlich rum, um uns vorerst weiterzuhelfen!! Vielen Dank nochmals dafür!',
     author: {
-      name: 'Thomas Müller',
+      name: 'Michael Brandt',
       role: 'Google Rezension',
-      image: '/images/testimonials/person3.jpg'
+      image: '👤'
     },
     rating: 5,
   },
   {
-    content: 'Sehr zufrieden mit der Wartung unserer Toranlagen. Schneller Service und kompetente Mitarbeiter.',
+    content: 'Unser Garagentor war seit gestern defekt, haben Fa.Lütjen angerufen und zeitnah für heute einen Termin bekommen, um es sofort reparieren zu lassen. Die beiden sehr...',
     author: {
-      name: 'Julia Koch',
+      name: 'Jens Meyer',
       role: 'Google Rezension',
-      image: '/images/testimonials/person4.jpg'
+      image: '👤'
+    },
+    rating: 5,
+  },
+  {
+    content: 'Vom ersten Mailkontakt bis hin zum Einbau war alles sehr gelungen. Die Mitarbeiter waren sehr freundlich und kompetent. Wir haben uns gefreut, eine tolle Firma hier in der Nähe zu haben, die so gute Arbeit macht. Weiter so. 🤗',
+    author: {
+      name: 'Tanja Lieske',
+      role: 'Google Rezension',
+      image: '👤'
+    },
+    rating: 5,
+  },
+  {
+    content: 'Super Service! Das Lütjen Team hat mein Garagentor schnell repariert. Die Monteure vor Ort waren pünktlich und höflich. Am Telefon hatte ich durchweg immer sehr...',
+    author: {
+      name: 'Michael Weltzer',
+      role: 'Google Rezension',
+      image: '👤'
     },
     rating: 5,
   }

@@ -300,10 +300,11 @@ export default function AboutPage() {
             <iframe
               className="absolute inset-0 h-full w-full"
               style={{ objectFit: 'cover' }}
-              src={`https://www.youtube.com/embed/mz0QKUTC2s8?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0&showinfo=0${isPlaying ? '&autoplay=1' : ''}`}
+              src={`https://www.youtube-nocookie.com/embed/mz0QKUTC2s8?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0&showinfo=0&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`}
               title="Über Lütjen Tor- und Metallbau GmbH"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
+              loading="lazy"
             ></iframe>
           </div>
         </motion.div>

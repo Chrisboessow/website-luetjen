@@ -323,7 +323,7 @@ export default function AboutPage() {
                 40 Jahre Erfahrung
               </p>
               <p className="mt-6 text-base leading-7 text-gray-600">
-                Was 1983 als Familienunternehmen begann, hat sich zu einem modernen Betrieb entwickelt. 
+                Was 1980 als Familienunternehmen begann, hat sich zu einem modernen Betrieb entwickelt. 
                 Dabei verbinden wir traditionelles Handwerk mit zukunftsweisender Technologie.
               </p>
             </div>

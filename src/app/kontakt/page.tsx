@@ -19,7 +19,9 @@ export default function Contact() {
         const observer = new ResizeObserver((entries) => {
           for (const entry of entries) {
             const height = entry.contentRect.height
-            container.style.height = `${height + 40}px` // 20px Abstand oben und unten
+            // Mehr Platz auf Mobile
+            const extraSpace = window.innerWidth < 640 ? 80 : 40
+            container.style.height = `${height + extraSpace}px`
           }
         })
         
@@ -55,22 +57,22 @@ export default function Contact() {
   ]
 
   return (
-    <main className="pt-28 pb-16">
+    <main className="pt-20 sm:pt-28 pb-16">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+              className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 lg:text-6xl"
             >
               Kontaktieren Sie
               <span className="relative mt-2 block text-primary-600">
                 uns heute.
                 <svg
-                  className="absolute -bottom-1 left-0 w-full"
+                  className="absolute -bottom-1 left-0 w-full hidden sm:block"
                   height="15"
                   viewBox="0 0 400 15"
                   fill="none"
@@ -89,7 +91,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-6 text-lg leading-8 text-gray-600"
+              className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600"
             >
               Wir sind für Sie da. Kontaktieren Sie uns für eine persönliche Beratung oder ein unverbindliches Angebot.
             </motion.p>
@@ -98,9 +100,9 @@ export default function Contact() {
       </section>
 
       {/* Contact Information Cards */}
-      <section className="mt-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-3">
+      <section className="mt-10 sm:mt-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
             {contactInfo.map((info, index) => (
               <motion.a
                 key={info.title}
@@ -111,17 +113,17 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group flex flex-col items-center rounded-2xl bg-white p-8 text-center shadow-lg ring-1 ring-gray-200/50 hover:shadow-xl transition-shadow duration-300"
+                className="group flex flex-col items-center rounded-xl sm:rounded-2xl bg-white p-6 sm:p-8 text-center shadow-lg ring-1 ring-gray-200/50 hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600/10">
-                  <div className="relative h-14 w-14 overflow-hidden rounded-full bg-primary-100 flex items-center justify-center">
-                    {info.icon === FaPhone && <PhoneIcon className="h-8 w-8 text-primary-600" />}
-                    {info.icon === FaEnvelope && <EnvelopeIcon className="h-8 w-8 text-primary-600" />}
-                    {info.icon === FaMapMarkerAlt && <MapPinIcon className="h-8 w-8 text-primary-600" />}
+                <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-primary-600/10">
+                  <div className="relative h-12 w-12 sm:h-14 sm:w-14 overflow-hidden rounded-full bg-primary-100 flex items-center justify-center">
+                    {info.icon === FaPhone && <PhoneIcon className="h-6 w-6 sm:h-8 sm:w-8 text-primary-600" />}
+                    {info.icon === FaEnvelope && <EnvelopeIcon className="h-6 w-6 sm:h-8 sm:w-8 text-primary-600" />}
+                    {info.icon === FaMapMarkerAlt && <MapPinIcon className="h-6 w-6 sm:h-8 sm:w-8 text-primary-600" />}
                   </div>
                 </div>
-                <h2 className="mt-4 text-xl font-semibold text-gray-900">{info.title}</h2>
-                <p className="mt-2 text-base text-gray-600">{info.content}</p>
+                <h2 className="mt-3 sm:mt-4 text-lg sm:text-xl font-semibold text-gray-900">{info.title}</h2>
+                <p className="mt-1 sm:mt-2 text-sm sm:text-base text-gray-600">{info.content}</p>
               </motion.a>
             ))}
           </div>
@@ -129,26 +131,35 @@ export default function Contact() {
       </section>
 
       {/* Contact Form */}
-      <section className="mt-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="mt-10 sm:mt-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="overflow-hidden rounded-2xl bg-primary-600/5 shadow-xl ring-1 ring-primary-900/10"
+              className="overflow-hidden rounded-xl sm:rounded-2xl bg-primary-600/5 shadow-xl ring-1 ring-primary-900/10"
             >
-              <div className="p-8">
-                <div className="mb-8 text-center">
-                  <h2 className="text-3xl font-bold text-primary-900">Kontaktformular</h2>
-                  <p className="mt-2 text-lg font-medium text-primary-700">Wir melden uns innerhalb von 24 Stunden bei Ihnen</p>
+              <div className="p-4 sm:p-8">
+                <div className="mb-6 sm:mb-8 text-center">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-primary-900">Kontaktformular</h2>
+                  <p className="mt-2 text-base sm:text-lg font-medium text-primary-700">Wir melden uns innerhalb von 24 Stunden bei Ihnen</p>
                 </div>
 
-                <div className="relative" style={{ height: '713px' }}>
+                <div ref={containerRef} className="relative" style={{ minHeight: '713px' }}>
                   <iframe
+                    ref={iframeRef}
                     src="https://api.leadconnectorhq.com/widget/form/OvvU1LpTWzCsTsLktQdq"
-                    style={{width:'100%',height:'100%',border:'none',borderRadius:'30px'}}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      border: 'none',
+                      borderRadius: '20px',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0
+                    }}
                     id="inline-OvvU1LpTWzCsTsLktQdq" 
                     data-layout="{'id':'INLINE'}"
                     data-trigger-type="alwaysShow"
@@ -161,7 +172,7 @@ export default function Contact() {
                     data-height="713"
                     data-layout-iframe-id="inline-OvvU1LpTWzCsTsLktQdq"
                     data-form-id="OvvU1LpTWzCsTsLktQdq"
-                    title="Form 0"
+                    title="Kontaktformular"
                   />
                   <Script src="https://link.msgsndr.com/js/form_embed.js" />
                 </div>

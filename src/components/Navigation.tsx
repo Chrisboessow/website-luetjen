@@ -30,14 +30,29 @@ const Logo = ({ className = '', width = 240, height = 78 }: { className?: string
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [lastScrollY, setLastScrollY] = useState(0)
+  const [show, setShow] = useState(true)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+    const controlNavbar = () => {
+      const currentScrollY = window.scrollY
+      
+      // Setze scrolled Status
+      setScrolled(currentScrollY > 20)
+      
+      // Berechne Scroll-Richtung und verstecke/zeige Navigation
+      if (currentScrollY > lastScrollY && currentScrollY > 72) { // 72px ist die Höhe der Navigation
+        setShow(false) // Nach unten scrollen -> verstecken
+      } else {
+        setShow(true) // Nach oben scrollen -> zeigen
+      }
+      
+      setLastScrollY(currentScrollY)
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+
+    window.addEventListener('scroll', controlNavbar)
+    return () => window.removeEventListener('scroll', controlNavbar)
+  }, [lastScrollY])
 
   // Verhindere Scrollen wenn Mobile-Menü offen ist
   useEffect(() => {
@@ -52,11 +67,16 @@ export default function Navigation() {
   }, [mobileMenuOpen])
 
   return (
-    <header className={cn(
-      'fixed inset-x-0 top-0 z-50 transition-all duration-300',
-      scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
-    )}>
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4 lg:px-8" aria-label="Global">
+    <motion.header 
+      className={cn(
+        'fixed inset-x-0 top-0 z-50 transition-all duration-300',
+        scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+      )}
+      initial={{ y: 0 }}
+      animate={{ y: show ? 0 : -100 }}
+      transition={{ duration: 0.3 }}
+    >
+      <nav className="mx-auto flex h-[72px] sm:h-[80px] lg:h-[88px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Lütjen GmbH</span>
@@ -191,6 +211,6 @@ export default function Navigation() {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   )
 } 

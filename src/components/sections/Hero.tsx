@@ -27,8 +27,8 @@ export default function Hero() {
   const [isPlaying, setIsPlaying] = useState(false)
 
   return (
-    <div className="relative overflow-hidden bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 pb-12 pt-12 sm:pb-16 sm:pt-16 lg:flex lg:px-8 lg:py-32">
+    <div className="relative overflow-hidden bg-white pt-[72px] sm:pt-[80px] lg:pt-[88px]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pb-12 pt-6 sm:pb-16 sm:pt-8 lg:flex lg:px-8 lg:py-32">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

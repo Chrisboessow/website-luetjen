@@ -1,8 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { PlayIcon, PauseIcon, SpeakerWaveIcon, ArrowsPointingOutIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import BaseSection from '@/components/layout/BaseSection'
 
@@ -244,100 +245,187 @@ const teamField = [
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState('office')
   const [isPlaying, setIsPlaying] = useState(false)
+  const [volume, setVolume] = useState(0.5)
+  const [showControls, setShowControls] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  // Check for mobile device
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768
+      setIsMobile(mobile)
+      if (mobile && isPlaying) {
+        setShowControls(true)
+      }
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [isPlaying])
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.volume = volume
+      videoRef.current.play()
+      setIsPlaying(true)
+      if (isMobile) {
+        setShowControls(true)
+      }
+    }
+  }
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause()
+        setIsPlaying(false)
+      } else {
+        videoRef.current.play()
+        setIsPlaying(true)
+      }
+    }
+  }
+
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = parseFloat(e.target.value)
+    setVolume(newVolume)
+    if (videoRef.current) {
+      videoRef.current.volume = newVolume
+    }
+  }
+
+  const handleFullscreen = () => {
+    if (videoRef.current) {
+      if (videoRef.current.requestFullscreen) {
+        videoRef.current.requestFullscreen()
+      } else if ((videoRef.current as any).webkitRequestFullscreen) {
+        (videoRef.current as any).webkitRequestFullscreen()
+      } else if ((videoRef.current as any).mozRequestFullScreen) {
+        (videoRef.current as any).mozRequestFullScreen()
+      }
+    }
+  }
 
   return (
     <div className="bg-white">
       {/* Video Section */}
-      <BaseSection>
-        <div className="mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="relative w-full rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl"
-          >
-            <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-xl">
-              <iframe
-                className="absolute inset-0 h-full w-full"
-                src={`https://www.youtube.com/embed/3rCy51Y-Phc?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0${isPlaying ? '&autoplay=1' : ''}`}
-                title="Über Lütjen Tor- und Metallbau GmbH"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </motion.div>
+      <div className="relative w-full bg-gray-900/5 overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12">
+          <div className="mx-auto max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="relative w-full rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl"
+            >
+              <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-xl">
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src={`https://www.youtube.com/embed/3rCy51Y-Phc?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0${isPlaying ? '&autoplay=1' : ''}`}
+                  title="Lütjen Tor- und Metallbau GmbH - Über Uns"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </BaseSection>
+      </div>
 
       {/* Team Section */}
       <BaseSection>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Unser Team</h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              Lernen Sie die Menschen kennen, die Lütjen Tor- und Metallbau ausmachen.
-            </p>
-          </div>
-          
-          <div className="mt-8 flex justify-center space-x-4 border-b border-gray-200">
-            <button
-              className={`pb-4 px-4 ${activeTab === 'office' ? 'border-b-2 border-primary-600 text-primary-600' : 'text-gray-500 hover:text-gray-700'}`}
-              onClick={() => setActiveTab('office')}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
             >
-              Büro & Verwaltung
+              Unser Team
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="mt-6 text-lg leading-8 text-gray-600"
+            >
+              Lernen Sie die Menschen kennen, die täglich ihr Bestes geben, um Ihre Projekte erfolgreich umzusetzen.
+            </motion.p>
+          </div>
+
+          <div className="mt-8 flex justify-center space-x-4 mb-12">
+            <button
+              onClick={() => setActiveTab('office')}
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                activeTab === 'office'
+                  ? 'bg-primary-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Büro-Team
             </button>
             <button
-              className={`pb-4 px-4 ${activeTab === 'field' ? 'border-b-2 border-primary-600 text-primary-600' : 'text-gray-500 hover:text-gray-700'}`}
               onClick={() => setActiveTab('field')}
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                activeTab === 'field'
+                  ? 'bg-primary-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
             >
-              Montage & Werkstatt
+              Montage-Team
             </button>
           </div>
 
-          <ul
+          <motion.ul
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
             role="list"
-            className="mx-auto mt-8 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 text-center sm:grid-cols-3 md:grid-cols-4 lg:mx-0 lg:max-w-none lg:grid-cols-5 xl:grid-cols-6"
+            className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
           >
             {(activeTab === 'office' ? teamOffice : teamField).map((person) => (
-              <li key={person.name}>
-                <div className="mx-auto h-24 w-24 relative rounded-full overflow-hidden">
+              <motion.li
+                key={person.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="group relative"
+              >
+                <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100">
                   {person.image.startsWith('/') ? (
                     <Image
+                      className="aspect-square w-full object-cover group-hover:scale-105 transition-transform duration-300"
                       src={person.image}
                       alt={person.name}
                       fill
-                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gray-200 text-4xl">
+                    <div className="w-full h-full flex items-center justify-center text-4xl bg-gray-200">
                       {person.image}
                     </div>
                   )}
                 </div>
-                <h3 className="mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900">
-                  {person.name}
-                </h3>
-                <p className="text-sm leading-6 text-gray-600">{person.role}</p>
+                <div className="mt-4">
+                  <h3 className="text-lg font-semibold leading-8 text-gray-900">
+                    {person.name}
+                  </h3>
+                  <p className="text-base leading-7 text-gray-600">{person.role}</p>
+                </div>
                 {person.linkedin && (
                   <Link
                     href={person.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-gray-500"
+                    className="mt-2 inline-block text-primary-600 hover:text-primary-700"
                   >
-                    <span className="sr-only">LinkedIn</span>
-                    <svg className="h-5 w-5 inline-block mt-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fillRule="evenodd"
-                        d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    LinkedIn Profil
                   </Link>
                 )}
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         </div>
       </BaseSection>
     </div>

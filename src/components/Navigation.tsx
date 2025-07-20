@@ -30,29 +30,14 @@ const Logo = ({ className = '', width = 240, height = 78 }: { className?: string
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [lastScrollY, setLastScrollY] = useState(0)
-  const [show, setShow] = useState(true)
 
   useEffect(() => {
-    const controlNavbar = () => {
-      const currentScrollY = window.scrollY
-      
-      // Setze scrolled Status
-      setScrolled(currentScrollY > 20)
-      
-      // Berechne Scroll-Richtung und verstecke/zeige Navigation
-      if (currentScrollY > lastScrollY && currentScrollY > 72) { // 72px ist die Höhe der Navigation
-        setShow(false) // Nach unten scrollen -> verstecken
-      } else {
-        setShow(true) // Nach oben scrollen -> zeigen
-      }
-      
-      setLastScrollY(currentScrollY)
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
     }
-
-    window.addEventListener('scroll', controlNavbar)
-    return () => window.removeEventListener('scroll', controlNavbar)
-  }, [lastScrollY])
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Verhindere Scrollen wenn Mobile-Menü offen ist
   useEffect(() => {
@@ -67,15 +52,10 @@ export default function Navigation() {
   }, [mobileMenuOpen])
 
   return (
-    <motion.header 
-      className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-all duration-300',
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
-      )}
-      initial={{ y: 0 }}
-      animate={{ y: show ? 0 : -100 }}
-      transition={{ duration: 0.3 }}
-    >
+    <header className={cn(
+      'fixed inset-x-0 top-0 z-50 transition-all duration-300',
+      scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+    )}>
       <nav className="mx-auto flex h-[72px] sm:h-[80px] lg:h-[88px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
@@ -147,28 +127,31 @@ export default function Navigation() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-4 sm:px-6 py-6 sm:max-w-sm shadow-xl"
+              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-4 sm:px-6 py-safe sm:max-w-sm shadow-xl"
+              style={{ top: 0 }}
             >
-              <div className="flex items-center justify-between">
-                <Link 
-                  href="/" 
-                  className="-m-1.5 p-1.5"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span className="sr-only">Lütjen</span>
-                  <Logo width={180} height={58} className="sm:hidden" />
-                  <Logo width={220} height={71} className="hidden sm:block" />
-                </Link>
-                <button
-                  type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-700 hover:bg-gray-100/50 transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span className="sr-only">Menü schließen</span>
-                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+              <div className="sticky top-0 bg-white pt-6 -mx-4 px-4 sm:-mx-6 sm:px-6">
+                <div className="flex items-center justify-between">
+                  <Link 
+                    href="/" 
+                    className="-m-1.5 p-1.5"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span className="sr-only">Lütjen</span>
+                    <Logo width={180} height={58} className="sm:hidden" />
+                    <Logo width={220} height={71} className="hidden sm:block" />
+                  </Link>
+                  <button
+                    type="button"
+                    className="-m-2.5 rounded-md p-2.5 text-gray-700 hover:bg-gray-100/50 transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span className="sr-only">Menü schließen</span>
+                    <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                  </button>
+                </div>
               </div>
-              <div className="mt-6 flow-root">
+              <div className="mt-6 flow-root pb-safe">
                 <div className="-my-6 divide-y divide-gray-500/10">
                   <div className="space-y-1 py-6">
                     {navigation.map((item) => (
@@ -211,6 +194,6 @@ export default function Navigation() {
           </>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   )
 } 

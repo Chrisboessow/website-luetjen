@@ -52,59 +52,61 @@ export default function Navigation() {
   }, [mobileMenuOpen])
 
   return (
-    <header className={cn(
-      'fixed inset-x-0 top-0 z-50 transition-all duration-300',
-      scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
-    )}>
-      <nav className="mx-auto flex h-[72px] sm:h-[80px] lg:h-[88px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Global">
-        <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Lütjen GmbH</span>
-            <Logo width={180} height={58} className="sm:hidden" />
-            <Logo className="hidden sm:block" />
-          </Link>
-        </div>
-        
-        {/* Mobile menu button */}
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-100/50 transition-colors"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <span className="sr-only">Menü öffnen</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-
-        {/* Desktop navigation */}
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={cn(
-                'text-base xl:text-lg font-semibold leading-6 transition-all duration-200',
-                scrolled 
-                  ? 'text-gray-900 hover:text-primary-600' 
-                  : 'text-gray-900 hover:text-primary-600'
-              )}
-            >
-              {item.name}
+    <>
+      <header className={cn(
+        'fixed inset-x-0 top-0 z-40 transition-all duration-300',
+        scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+      )}>
+        <nav className="mx-auto flex h-[72px] sm:h-[80px] lg:h-[88px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Global">
+          <div className="flex lg:flex-1">
+            <Link href="/" className="-m-1.5 p-1.5">
+              <span className="sr-only">Lütjen GmbH</span>
+              <Logo width={180} height={58} className="sm:hidden" />
+              <Logo className="hidden sm:block" />
             </Link>
-          ))}
-        </div>
+          </div>
+          
+          {/* Mobile menu button */}
+          <div className="flex lg:hidden">
+            <button
+              type="button"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-100/50 transition-colors"
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <span className="sr-only">Menü öffnen</span>
+              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            href="/kontakt"
-            className="btn-primary text-base xl:text-lg"
-          >
-            Jetzt Beratung anfordern
-          </Link>
-        </div>
-      </nav>
+          {/* Desktop navigation */}
+          <div className="hidden lg:flex lg:gap-x-12">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  'text-base xl:text-lg font-semibold leading-6 transition-all duration-200',
+                  scrolled 
+                    ? 'text-gray-900 hover:text-primary-600' 
+                    : 'text-gray-900 hover:text-primary-600'
+                )}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <Link
+              href="/kontakt"
+              className="btn-primary text-base xl:text-lg"
+            >
+              Jetzt Beratung anfordern
+            </Link>
+          </div>
+        </nav>
+      </header>
 
       {/* Mobile menu */}
       <AnimatePresence>
@@ -127,10 +129,10 @@ export default function Navigation() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-4 sm:px-6 py-safe sm:max-w-sm shadow-xl"
-              style={{ top: 0 }}
+              className="fixed inset-0 z-50 w-full overflow-y-auto bg-white lg:hidden"
+              style={{ maxHeight: '100vh' }}
             >
-              <div className="sticky top-0 bg-white pt-6 -mx-4 px-4 sm:-mx-6 sm:px-6">
+              <div className="sticky top-0 z-50 bg-white px-4 sm:px-6 py-6 border-b border-gray-200/50">
                 <div className="flex items-center justify-between">
                   <Link 
                     href="/" 
@@ -151,49 +153,47 @@ export default function Navigation() {
                   </button>
                 </div>
               </div>
-              <div className="mt-6 flow-root pb-safe">
-                <div className="-my-6 divide-y divide-gray-500/10">
-                  <div className="space-y-1 py-6">
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="group -mx-3 flex items-center gap-2 rounded-lg px-3 py-3 text-base sm:text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50 transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <span className="flex-1">{item.name}</span>
-                        <svg
-                          className="h-5 w-5 text-gray-400 group-hover:text-gray-500"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          aria-hidden="true"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M7 7l3-3 3 3m0 6l-3 3-3-3"
-                            transform="rotate(-90 10 10)"
-                          />
-                        </svg>
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="py-6">
+              <div className="px-4 sm:px-6 py-6">
+                <div className="space-y-1">
+                  {navigation.map((item) => (
                     <Link
-                      href="/kontakt"
-                      className="btn-primary w-full justify-center text-base sm:text-lg"
+                      key={item.name}
+                      href={item.href}
+                      className="group -mx-3 flex items-center gap-2 rounded-lg px-3 py-3 text-base sm:text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50 transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Jetzt Beratung anfordern
+                      <span className="flex-1">{item.name}</span>
+                      <svg
+                        className="h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        aria-hidden="true"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M7 7l3-3 3 3m0 6l-3 3-3-3"
+                          transform="rotate(-90 10 10)"
+                        />
+                      </svg>
                     </Link>
-                  </div>
+                  ))}
+                </div>
+                <div className="mt-8">
+                  <Link
+                    href="/kontakt"
+                    className="btn-primary w-full justify-center text-base sm:text-lg"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Jetzt Beratung anfordern
+                  </Link>
                 </div>
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   )
 } 

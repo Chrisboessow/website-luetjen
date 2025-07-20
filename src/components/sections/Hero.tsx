@@ -1,9 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircleIcon, StarIcon, PlayIcon, PauseIcon, SpeakerWaveIcon, ArrowsPointingOutIcon } from '@heroicons/react/24/solid'
-import Image from 'next/image'
-import { useState, useRef, useEffect } from 'react'
+import { CheckCircleIcon, StarIcon } from '@heroicons/react/24/solid'
+import { useState } from 'react'
 
 const trustLogos = [
   { image: '/images/partners/hörmann-removebg-preview.png', name: 'Hörmann' },
@@ -25,67 +24,6 @@ const benefits = [
 
 export default function Hero() {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [volume, setVolume] = useState(0.5)
-  const [showControls, setShowControls] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  // Check for mobile device
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768)
-    const handleResize = () => {
-      const mobile = window.innerWidth < 768
-      setIsMobile(mobile)
-      if (mobile && isPlaying) {
-        setShowControls(true)
-      }
-    }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [isPlaying])
-
-  const handlePlay = () => {
-    if (videoRef.current) {
-      videoRef.current.volume = volume
-      videoRef.current.play()
-      setIsPlaying(true)
-      if (isMobile) {
-        setShowControls(true)
-      }
-    }
-  }
-
-  const togglePlayPause = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause()
-        setIsPlaying(false)
-      } else {
-        videoRef.current.play()
-        setIsPlaying(true)
-      }
-    }
-  }
-
-  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(e.target.value)
-    setVolume(newVolume)
-    if (videoRef.current) {
-      videoRef.current.volume = newVolume
-    }
-  }
-
-  const handleFullscreen = () => {
-    if (videoRef.current) {
-      if (videoRef.current.requestFullscreen) {
-        videoRef.current.requestFullscreen()
-      } else if ((videoRef.current as any).webkitRequestFullscreen) {
-        (videoRef.current as any).webkitRequestFullscreen()
-      } else if ((videoRef.current as any).mozRequestFullScreen) {
-        (videoRef.current as any).mozRequestFullScreen()
-      }
-    }
-  }
 
   return (
     <div className="relative overflow-hidden bg-white">
@@ -178,84 +116,14 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="relative w-full rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl"
             >
-              <div 
-                className="relative aspect-video w-full overflow-hidden rounded-lg shadow-xl bg-black"
-                onMouseEnter={() => setShowControls(true)}
-                onMouseLeave={() => setShowControls(false)}
-                onTouchStart={() => setShowControls(true)}
-                onTouchEnd={() => !isMobile && setTimeout(() => setShowControls(false), 3000)}
-              >
-                <video
-                  ref={videoRef}
-                  playsInline
-                  className="h-full w-full object-cover"
-                  onEnded={() => setIsPlaying(false)}
-                  onClick={togglePlayPause}
-                  poster="/images/hero-placeholder.jpg"
-                >
-                  <source src="./video/hero-placeholder2.mp4" type="video/mp4" />
-                </video>
-                
-                {/* Play Button Overlay - nur anzeigen wenn nicht gestartet */}
-                {!isPlaying && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                    <button
-                      onClick={handlePlay}
-                      className="group relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-lg transition-all duration-300 hover:bg-white hover:scale-110 focus:outline-none focus:ring-4 focus:ring-orange-500/30"
-                    >
-                      <PlayIcon className="ml-1 h-6 w-6 sm:h-8 sm:w-8 text-gray-900 transition-transform group-hover:scale-110" />
-                    </button>
-                  </div>
-                )}
-                
-                {/* Video Controls - anzeigen bei Hover/Touch oder auf Mobile */}
-                {isPlaying && (showControls || isMobile) && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
-                    <div className="flex items-center gap-2 sm:gap-4">
-                      {/* Play/Pause Button */}
-                      <button
-                        onClick={togglePlayPause}
-                        className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-all duration-200 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-                      >
-                        {isPlaying ? (
-                          <PauseIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
-                        ) : (
-                          <PlayIcon className="ml-0.5 h-4 w-4 sm:h-5 sm:w-5 text-white" />
-                        )}
-                      </button>
-
-                      {/* Volume Control */}
-                      <div className="flex items-center gap-2 flex-1 max-w-xs">
-                        <SpeakerWaveIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white flex-shrink-0" />
-                        <input
-                          type="range"
-                          min="0"
-                          max="1"
-                          step="0.1"
-                          value={volume}
-                          onChange={handleVolumeChange}
-                          className="flex-1 h-1 bg-white/30 rounded-lg appearance-none slider cursor-pointer"
-                          style={{
-                            background: `linear-gradient(to right, #f97316 0%, #f97316 ${volume * 100}%, rgba(255,255,255,0.3) ${volume * 100}%, rgba(255,255,255,0.3) 100%)`
-                          }}
-                        />
-                        <span className="text-white text-xs sm:text-sm font-medium min-w-8 text-center">
-                          {Math.round(volume * 100)}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                
-                {/* Fullscreen Button - separat unten rechts */}
-                {isPlaying && (
-                  <button
-                    onClick={handleFullscreen}
-                    className="absolute bottom-4 right-4 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-black/50 backdrop-blur-sm transition-all duration-200 hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-white/50"
-                  >
-                    <ArrowsPointingOutIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
-                  </button>
-                )}
+              <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-xl">
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src={`https://www.youtube.com/embed/zqLYU0EcHc8?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0${isPlaying ? '&autoplay=1' : ''}`}
+                  title="Lütjen Tor- und Metallbau GmbH"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             </motion.div>
           </div>

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { CheckCircleIcon, StarIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const trustLogos = [
   { image: '/images/partners/hörmann-removebg-preview.png', name: 'Hörmann' },

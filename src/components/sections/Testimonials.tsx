@@ -68,20 +68,21 @@ export default function Testimonials() {
 
   const nextTestimonials = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex + (window.innerWidth >= 1024 ? 2 : 1) >= testimonials.length ? 0 : prevIndex + (window.innerWidth >= 1024 ? 2 : 1)
+      prevIndex + 2 >= testimonials.length ? 0 : prevIndex + 2
     )
   }
 
   const previousTestimonials = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex - (window.innerWidth >= 1024 ? 2 : 1) < 0 ? testimonials.length - (window.innerWidth >= 1024 ? 2 : 1) : prevIndex - (window.innerWidth >= 1024 ? 2 : 1)
+      prevIndex - 2 < 0 ? testimonials.length - 2 : prevIndex - 2
     )
   }
 
+  // Stelle sicher, dass wir immer zwei gültige Testimonials haben
   const currentTestimonials = [
     testimonials[currentIndex],
-    window.innerWidth >= 1024 ? testimonials[currentIndex + 1] : null
-  ].filter(Boolean)
+    testimonials[(currentIndex + 1) % testimonials.length]
+  ]
 
   return (
     <section className="bg-white py-12 sm:py-16 lg:py-20">
@@ -159,7 +160,7 @@ export default function Testimonials() {
             <button
               onClick={previousTestimonials}
               className="rounded-full bg-white p-1.5 sm:p-2 text-gray-400 shadow-lg ring-1 ring-gray-200/50 hover:text-gray-900 hover:ring-orange-500/20 transition duration-300"
-              disabled={testimonials.length <= (window.innerWidth >= 1024 ? 2 : 1)}
+              disabled={testimonials.length <= 2}
             >
               <ChevronLeftIcon className="h-5 w-5 sm:h-6 sm:w-6" />
               <span className="sr-only">Vorherige Bewertungen</span>
@@ -167,7 +168,7 @@ export default function Testimonials() {
             <button
               onClick={nextTestimonials}
               className="rounded-full bg-white p-1.5 sm:p-2 text-gray-400 shadow-lg ring-1 ring-gray-200/50 hover:text-gray-900 hover:ring-orange-500/20 transition duration-300"
-              disabled={testimonials.length <= (window.innerWidth >= 1024 ? 2 : 1)}
+              disabled={testimonials.length <= 2}
             >
               <ChevronRightIcon className="h-5 w-5 sm:h-6 sm:w-6" />
               <span className="sr-only">Nächste Bewertungen</span>

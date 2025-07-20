@@ -89,9 +89,12 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
           >
-            <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-primary-600 px-4 sm:px-6 py-2.5 sm:py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+            <a 
+              href="/kontakt"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-primary-600 px-4 sm:px-6 py-2.5 sm:py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+            >
               Jetzt Beratung anfordern
-            </button>
+            </a>
             <a 
               href="https://www.google.com/search?q=L%C3%BCtjen+Tor-+und+Metallbau+GmbH&oq=L%C3%BCtjen+Tor-+und+Metallbau+GmbH"
               target="_blank"

@@ -117,7 +117,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="relative w-full rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl"
             >
-              <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-xl">
+              <div className="relative w-full overflow-hidden rounded-lg shadow-xl" style={{ paddingBottom: '56.25%' }}>
                 <iframe
                   className="absolute inset-0 h-full w-full"
                   src={`https://www.youtube.com/embed/YZd-b7fY1KE?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0${isPlaying ? '&autoplay=1' : ''}`}

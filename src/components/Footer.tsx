@@ -45,6 +45,12 @@ export default function Footer() {
             className="flex flex-col items-center space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-500"
           >
             <p className="text-center text-base sm:text-lg">&copy; {new Date().getFullYear()} Lütjen GmbH. Alle Rechte vorbehalten.</p>
+            <p className="text-center text-sm text-gray-400">
+              Bildmaterial &copy; Lütjen GmbH und unserer Partner: Hörmann, Novoferm, Teckentrup, Berner, MFZ, ConDoor.{' '}
+              <Link href="/downloads" className="text-primary-600 hover:text-primary-700">
+                Produktkataloge ansehen
+              </Link>
+            </p>
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-base sm:text-lg">
               <Link href="/impressum" className="hover:text-gray-900 transition-colors">Impressum</Link>
               <span className="hidden sm:inline">&</span>

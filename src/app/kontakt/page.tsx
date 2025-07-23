@@ -144,7 +144,6 @@ export default function Contact() {
               <div className="p-4 sm:p-8">
                 <div className="mb-6 sm:mb-8 text-center">
                   <h2 className="text-2xl sm:text-3xl font-bold text-primary-900">Kontaktformular</h2>
-                  <p className="mt-2 text-base sm:text-lg font-medium text-primary-700">Wir melden uns innerhalb von 24 Stunden bei Ihnen</p>
                 </div>
 
                 <div ref={containerRef} className="relative" style={{ minHeight: '713px' }}>

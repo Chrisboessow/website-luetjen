@@ -14,6 +14,7 @@ const serviceTypes = [
     image: "/images/products/TÜV-konforme-Wartung.jpg",
     features: [
       "Jährliche UVV-Prüfung nach DGUV Vorschrift 3",
+      "Prüfung nach ASR A1.7 (Arbeitsstättenrichtlinie)",
       "Prüfung nach BetrSichV",
       "Vollständige Dokumentation",
       "Zertifizierte Prüfer"

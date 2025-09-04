@@ -6,6 +6,7 @@ import FAQ from '@/components/sections/FAQ'
 import PainPoints from '@/components/sections/PainPoints'
 import Testimonials from '@/components/sections/Testimonials'
 import Partners from '@/components/sections/Partners'
+import JobsPopup from '@/components/JobsPopup'
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <WhatMakesUsSpecial />
       <Process />
       <FAQ />
+      <JobsPopup />
     </main>
   )
 } 

@@ -172,7 +172,7 @@ export default function JobsPage() {
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {teamTestimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.name}
@@ -312,7 +312,7 @@ export default function JobsPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {benefits.map((benefit, index) => (
               <motion.div
                 key={benefit.title}
@@ -373,7 +373,7 @@ export default function JobsPage() {
               </a>
             </div>
             <p className="text-primary-200 mt-6 text-sm">
-              Oder komm einfach vorbei: Annenheider Str. 29, 27749 Delmenhorst
+              Oder komm einfach vorbei: Annenheider Str. 29, 27726 Worpswede
             </p>
           </motion.div>
         </div>

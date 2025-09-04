@@ -8,11 +8,11 @@ import Script from 'next/script'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Lütjen GmbH - Tore, Türen & Metallbau seit 1980 | Delmenhorst',
-  description: 'Seit 1980 Ihr zuverlässiger Partner für Industrietore, Privattore, Brandschutztore und Metallbau in Delmenhorst und Umgebung. TÜV-konforme Wartung, 24h-Notdienst. Jetzt Beratung anfordern!',
+  title: 'Lütjen GmbH - Tore, Türen & Metallbau seit 1980 | Worpswede',
+  description: 'Seit 1980 Ihr zuverlässiger Partner für Industrietore, Privattore, Brandschutztore und Metallbau in Worpswede und Umgebung. TÜV-konforme Wartung, 24h-Notdienst. Jetzt Beratung anfordern!',
   keywords: [
-    'Tore Delmenhorst',
-    'Metallbau Delmenhorst', 
+    'Tore Worpswede',
+    'Metallbau Worpswede', 
     'Industrietore',
     'Privattore',
     'Brandschutztore',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Lütjen GmbH - Tore, Türen & Metallbau seit 1980',
-    description: 'Seit 1980 Ihr zuverlässiger Partner für Industrietore, Privattore, Brandschutztore und Metallbau in Delmenhorst und Umgebung.',
+    description: 'Seit 1980 Ihr zuverlässiger Partner für Industrietore, Privattore, Brandschutztore und Metallbau in Worpswede und Umgebung.',
     url: 'https://luetjen-gmbh.de',
     siteName: 'Lütjen GmbH',
     locale: 'de_DE',
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Lütjen GmbH - Tore, Türen & Metallbau seit 1980',
-    description: 'Seit 1980 Ihr zuverlässiger Partner für Industrietore, Privattore, Brandschutztore und Metallbau in Delmenhorst.',
+    description: 'Seit 1980 Ihr zuverlässiger Partner für Industrietore, Privattore, Brandschutztore und Metallbau in Worpswede.',
     images: ['/images/logos/Logo2025-removebg-preview.png'],
   },
   robots: {
@@ -117,7 +117,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "Lütjen GmbH",
-              "description": "Seit 1980 Ihr zuverlässiger Partner für Industrietore, Privattore, Brandschutztore und Metallbau in Delmenhorst und Umgebung.",
+              "description": "Seit 1980 Ihr zuverlässiger Partner für Industrietore, Privattore, Brandschutztore und Metallbau in Worpswede und Umgebung.",
               "url": "https://luetjen-gmbh.de",
               "telephone": "+49-4221-80979-80",
               "email": "info@luetjen-gmbh.de",
@@ -125,14 +125,14 @@ export default function RootLayout({
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Annenheider Str. 29",
-                "addressLocality": "Delmenhorst",
-                "postalCode": "27749",
+                "addressLocality": "Worpswede",
+                "postalCode": "27726",
                 "addressCountry": "DE"
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": "53.0498",
-                "longitude": "8.6311"
+                "latitude": "53.3167",
+                "longitude": "8.9167"
               },
               "openingHours": [
                 "Mo-Fr 07:00-17:00"
@@ -141,8 +141,8 @@ export default function RootLayout({
                 "@type": "GeoCircle",
                 "geoMidpoint": {
                   "@type": "GeoCoordinates",
-                  "latitude": "53.0498",
-                  "longitude": "8.6311"
+                  "latitude": "53.3167",
+                  "longitude": "8.9167"
                 },
                 "geoRadius": "50000"
               },

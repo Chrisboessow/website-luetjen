@@ -239,6 +239,12 @@ const teamField = [
     role: 'Azubi Metall',
     image: '👤', // Person-Icon als Platzhalter
     linkedin: ''
+  },
+  {
+    name: 'Miguel Fischer',
+    role: 'Azubi Metall',
+    image: '👤', // Person-Icon als Platzhalter
+    linkedin: ''
   }
 ]
 

@@ -235,8 +235,8 @@ const teamField = [
     linkedin: ''
   },
   {
-    name: 'Miguel Fischer',
-    role: 'Azubi Metall (ab 1.8.2024)',
+    name: 'Mika Semken',
+    role: 'Azubi Metall',
     image: '👤', // Person-Icon als Platzhalter
     linkedin: ''
   }

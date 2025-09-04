@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 const navigation = [
   { name: 'Leistungen', href: '/services' },
   { name: 'Über uns', href: '/about' },
+  { name: 'Jobs', href: '/jobs' },
   { name: 'Social Media', href: '/social' },
 ]
 

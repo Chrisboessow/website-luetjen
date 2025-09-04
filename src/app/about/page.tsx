@@ -351,7 +351,7 @@ export default function AboutPage() {
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Menschen, die mit Leidenschaft und Expertise Ihre Projekte verwirklichen.
             </p>
-
+            
             {/* Tab Buttons */}
             <div className="mt-12 flex justify-center space-x-4">
               <button
@@ -404,14 +404,14 @@ export default function AboutPage() {
                     <div className="flex justify-center">
                       <div className="relative w-full aspect-[4/5] max-w-sm overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-[1.02]">
                         {typeof person.image === 'string' && person.image.startsWith('/') ? (
-                          <Image
-                            src={person.image}
-                            alt={person.name}
-                            fill
-                            className="object-cover"
+                        <Image
+                          src={person.image}
+                          alt={person.name}
+                          fill
+                          className="object-cover"
                             sizes="(max-width: 768px) 100vw, 50vw"
-                            priority={person.name === 'Christoph Lütjen'}
-                          />
+                          priority={person.name === 'Christoph Lütjen'}
+                        />
                         ) : (
                           <div className="w-full h-full bg-gray-200 flex items-center justify-center text-6xl">
                             {person.image}
@@ -474,13 +474,13 @@ export default function AboutPage() {
                     <div className="flex justify-center">
                       <div className="relative w-full aspect-[4/5] max-w-sm overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-[1.02]">
                         {typeof person.image === 'string' && person.image.startsWith('/') ? (
-                          <Image
-                            src={person.image}
-                            alt={person.name}
-                            fill
-                            className="object-cover"
+                        <Image
+                          src={person.image}
+                          alt={person.name}
+                          fill
+                          className="object-cover"
                             sizes="(max-width: 768px) 100vw, 50vw"
-                          />
+                        />
                         ) : (
                           <div className="w-full h-full bg-gray-200 flex items-center justify-center text-6xl">
                             {person.image}

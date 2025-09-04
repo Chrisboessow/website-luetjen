@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<!-- Hauptseite -->
+<url>
+  <loc>https://luetjen-gmbh.de/</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>1.0</priority>
+</url>
+
+<!-- Leistungen -->
+<url>
+  <loc>https://luetjen-gmbh.de/services</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://luetjen-gmbh.de/services/industrietore</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://luetjen-gmbh.de/services/privattore</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://luetjen-gmbh.de/services/brandschutz</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://luetjen-gmbh.de/services/verladetechnik</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://luetjen-gmbh.de/services/zaun-und-hoftore</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://luetjen-gmbh.de/services/service-und-wartung</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<!-- Über uns -->
+<url>
+  <loc>https://luetjen-gmbh.de/about</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
+
+<!-- Jobs / Karriere -->
+<url>
+  <loc>https://luetjen-gmbh.de/jobs</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<!-- Kontakt -->
+<url>
+  <loc>https://luetjen-gmbh.de/kontakt</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<!-- Downloads -->
+<url>
+  <loc>https://luetjen-gmbh.de/downloads</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+
+<!-- Social Media -->
+<url>
+  <loc>https://luetjen-gmbh.de/social</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.5</priority>
+</url>
+
+<!-- Rechtliches -->
+<url>
+  <loc>https://luetjen-gmbh.de/impressum</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+
+<url>
+  <loc>https://luetjen-gmbh.de/datenschutz</loc>
+  <lastmod>2025-01-09</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+
+</urlset>

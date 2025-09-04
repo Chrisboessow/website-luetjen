@@ -1,0 +1,33 @@
+# Robots.txt für Lütjen GmbH Website
+
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://luetjen-gmbh.de/sitemap.xml
+
+# Crawl-delay für höfliches Crawling
+Crawl-delay: 1
+
+# Spezifische Erlaubnis für wichtige Seiten
+Allow: /services
+Allow: /about
+Allow: /jobs
+Allow: /kontakt
+Allow: /downloads
+Allow: /social
+
+# Blockiere unwichtige/temporäre Pfade
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /tmp/
+Disallow: /*.json$
+
+# Medien erlauben
+Allow: /images/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.pdf$

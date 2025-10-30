@@ -102,12 +102,6 @@ const teamField = [
     linkedin: ''
   },
   {
-    name: 'Dennis Schwenzfeier',
-    role: 'Metallbaumeister',
-    image: '/images/team/schwenzfeier-dennis.jpg',
-    linkedin: ''
-  },
-  {
     name: 'Sven Preckel',
     role: 'Metallbauer',
     image: '/images/team/preckel-sven.jpeg',
@@ -206,7 +200,7 @@ const teamField = [
   {
     name: 'Viktor Henning',
     role: 'Metallbauer',
-    image: '👤', // Person-Icon als Platzhalter
+    image: '/images/team/henning-viktor.JPG',
     linkedin: ''
   },
   // Azubis
@@ -237,13 +231,13 @@ const teamField = [
   {
     name: 'Mika Semken',
     role: 'Azubi Metall',
-    image: '👤', // Person-Icon als Platzhalter
+    image: '/images/team/semken-mika.JPG',
     linkedin: ''
   },
   {
     name: 'Miguel Fischer',
     role: 'Azubi Metall',
-    image: '👤', // Person-Icon als Platzhalter
+    image: '/images/team/fischer-miguel.JPG',
     linkedin: ''
   }
 ]

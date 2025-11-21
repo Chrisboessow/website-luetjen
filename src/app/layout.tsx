@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import CookieBanner from '@/components/CookieBanner'
 import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -186,6 +187,7 @@ export default function RootLayout({
         <Navigation />
         {children}
         <Footer />
+        <CookieBanner />
         <Script 
           src="https://beta.leadconnectorhq.com/loader.js"  
           data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" 

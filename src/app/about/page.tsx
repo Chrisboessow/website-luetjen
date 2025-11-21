@@ -225,7 +225,7 @@ const teamField = [
   {
     name: 'Finn Hesse',
     role: 'Azubi Metall',
-    image: '👤', // Person-Icon als Platzhalter
+    image: '/images/team/hesse-finn.JPG',
     linkedin: ''
   },
   {

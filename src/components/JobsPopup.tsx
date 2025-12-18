@@ -113,7 +113,7 @@ export default function JobsPopup() {
                     </div>
                     <div className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl">
                       <span className="w-3 h-3 bg-green-500 rounded-full mb-2"></span>
-                      <span className="text-sm font-medium text-gray-900">Firmenwagen möglich</span>
+                      <span className="text-sm font-medium text-gray-900">30 Tage Urlaub</span>
                     </div>
                     <div className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl">
                       <span className="w-3 h-3 bg-green-500 rounded-full mb-2"></span>

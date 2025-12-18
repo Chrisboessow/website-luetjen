@@ -8,12 +8,12 @@ import {
   BoltIcon,
   AcademicCapIcon,
   CurrencyEuroIcon,
-  TruckIcon,
   UserGroupIcon,
   ClockIcon,
   TrophyIcon,
   PhoneIcon,
-  EnvelopeIcon
+  EnvelopeIcon,
+  CalendarIcon
 } from '@heroicons/react/24/outline'
 
 const jobPositions = [
@@ -28,7 +28,7 @@ const jobPositions = [
       'Führerschein Klasse B',
       'Teamfähigkeit und Zuverlässigkeit'
     ],
-    benefits: ['Firmenwagen möglich', 'Attraktive Vergütung', 'Weiterbildungsmöglichkeiten'],
+    benefits: ['30 Tage Urlaub', 'Attraktive Vergütung', 'Weiterbildungsmöglichkeiten'],
     icon: WrenchScrewdriverIcon
   },
   {
@@ -42,16 +42,16 @@ const jobPositions = [
       'Führerschein Klasse B',
       'Sorgfältige Arbeitsweise'
     ],
-    benefits: ['Firmenwagen möglich', 'Übertarifliche Bezahlung', 'Fortbildungen'],
+    benefits: ['30 Tage Urlaub', 'Übertarifliche Bezahlung', 'Fortbildungen'],
     icon: BoltIcon
   }
 ]
 
 const teamTestimonials = [
   {
-    name: 'Dennis Schwenzfeier',
+    name: 'Nils Stelljes',
     role: 'Metallbaumeister',
-    image: '/images/team/schwenzfeier-dennis.jpg',
+    image: '/images/team/stelljes-nils.jpg',
     quote: 'Bei Lütjen arbeite ich gerne, weil hier jeder Tag anders ist und wir als Team gemeinsam anspruchsvolle Projekte verwirklichen.'
   },
   {
@@ -75,9 +75,9 @@ const benefits = [
     description: 'Übertarifliche Bezahlung und leistungsgerechte Prämien'
   },
   {
-    icon: TruckIcon,
-    title: 'Firmenwagen',
-    description: 'Firmenwagen für qualifizierte Mitarbeiter möglich'
+    icon: CalendarIcon,
+    title: '30 Tage Urlaub',
+    description: 'Großzügige Urlaubsregelung für perfekte Work-Life-Balance'
   },
   {
     icon: TrophyIcon,

@@ -5,6 +5,7 @@ import Process from '@/components/sections/Process'
 import FAQ from '@/components/sections/FAQ'
 import PainPoints from '@/components/sections/PainPoints'
 import Testimonials from '@/components/sections/Testimonials'
+import TorAktion2026 from '@/components/sections/TorAktion2026'
 import Partners from '@/components/sections/Partners'
 import JobsPopup from '@/components/JobsPopup'
 
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <PainPoints />
       <Testimonials />
+      <TorAktion2026 />
       <Partners />
       <WhatMakesUsSpecial />
       <Process />

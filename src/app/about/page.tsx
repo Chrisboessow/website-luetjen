@@ -205,12 +205,6 @@ const teamField = [
   },
   // Azubis
   {
-    name: 'Fiete Fischer',
-    role: 'Azubi Metall',
-    image: '/images/team/fischer-fiete.jpg',
-    linkedin: ''
-  },
-  {
     name: 'Maurice Krause',
     role: 'Azubi Metall',
     image: '/images/team/krause-maurice.jpg',

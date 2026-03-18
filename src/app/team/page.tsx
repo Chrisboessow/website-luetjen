@@ -212,12 +212,6 @@ const teamMembers: {
       description: "Viktor bringt als Metallbauer sein Können in jedes Projekt ein und sorgt dafür, dass alles läuft.",
     },
     {
-      name: "Fiete Fischer",
-      position: "Azubi Metall",
-      description: "Fiete lernt als Metallbauer-Azubi bei uns das Handwerk von der Pike auf – motiviert und engagiert",
-      imageUrl: "/images/team/fischer-fiete.jpg",
-    },
-    {
       name: "Maurice Krause",
       position: "Azubi Metall",
       description: "Als Metallbauer-Azubi sammelt Maurice täglich praktische Erfahrung und wächst mit jeder Aufgabe.",
